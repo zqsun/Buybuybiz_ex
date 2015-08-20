@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}{% load postman_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +23,7 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-static-top role="navigation"">
-      <div class="container">
+      <!-- <div class="container"> -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -32,8 +33,7 @@
             </button>
             <a class="navbar-brand" href="{% url 'account:login' %}">BuybuyBiz</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
               <li class="active"><a href="{% url 'account:login' %}">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
@@ -52,33 +52,103 @@
               </li>
  -->
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-              {% if user.is_authenticated %}
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{user.get_username}}<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="#"><i class="fa fa-user fa-fw"></i>Profile</a></li>
-                          <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li><a href="{% url 'account:logout'%}?next={% url 'account:login'%}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-                      </ul>
-                  </li>
-                  <!-- <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p> -->
-              {% else %}
-                  <li><a href="{% url 'account:login'%}">Sign in</a></li>
-              {% endif %}
-              <!-- 
-<li><a href="../navbar/">Default</a></li>
-              <li><a href="../navbar-static-top/">Static top</a></li>
-              <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
- -->
-          </ul>
-          </div>
-      </div>
+        <ul class="nav navbar-top-links navbar-right">
+              <!-- <li> <a>Hello {{ user.get_username }}</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                      <li>
+                        <a href="{% url 'postman_inbox' %}">
+                          <div>
+                            <i class="fa fa-comment fa-fw"></i>
+                            {% trans "Inbox" %}
+                            {% postman_unread as unread_count %}
+                            {% if unread_count %}
+                            <!-- <span class="pull-right text-muted small"> -->
+                            <span class = "badge pull-right">
+                                      {{ unread_count }}
+                                  </span>
+                                  {% endif %}
+                          </div>  
+                        </a>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li>
+                        <a href="{% url 'postman_sent' %}">
+                          <div>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            {% trans "Messages Sent" %}
+                          </div>  
+                        </a>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li>
+                        <a href="{% url 'postman_write' %}">
+                          <div>
+                            <i class="fa fa-twitter fa-fw"></i>
+                            {% trans "Write Message" %}
+                          </div>  
+                        </a>
+                      </li>
+                      <li class="divider"></li>
+
+                      <li>
+                        <a href="{% url 'postman_archives' %}">
+                          <div>
+                            <i class="fa fa-archive fa-fw"></i>
+                            {% trans "Archives" %}
+                          </div>  
+                        </a>
+                      </li>
+                      <li class="divider"></li>
+                      
+                      <li>
+                        <a href="{% url 'postman_trash' %}">
+                          <div>
+                            <i class="fa fa-bitbucket fa-fw"></i>
+                            {% trans "Trash" %}
+                          </div>  
+                        </a>
+                      </li>
+                      
+
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{% url 'account:logout'%}?next={% url 'account:login'%}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>      
+            <!-- </div> -->
       {% block nav_sidebar %}{% endblock %}
     </nav>
     <div class="container" role="main">
-    
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              {{message}}
+        </div>
+        {% endfor %}
+    {% endif %}
     {% block container %}{% endblock %}
     {% block content %}{% endblock %}
     </div>
