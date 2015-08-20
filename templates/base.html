@@ -53,7 +53,7 @@
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <!-- <li> <a>Hello {{ user.get_username }}</a></li> -->
+            {% if user.is_authenticated %}
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -137,6 +137,9 @@
               <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
+            {% else %}
+            <li><a href="{% url 'account:login'%}">Sign in</a></li>
+            {% endif %}
           </ul>      
         </div>
         {% block nav_sidebar %}{% endblock %}
