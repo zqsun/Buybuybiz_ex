@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'pagination',
     'account',
     'myaccount',
+    'postman',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'buybuybiz_ex.urls'
@@ -120,3 +122,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
 
 LOGIN_REDIRECT_URL = '/myaccount/'
+
+POSTMAN_DISABLE_USER_EMAILING = True
+POSTMAN_AUTO_MODERATE_AS = True
