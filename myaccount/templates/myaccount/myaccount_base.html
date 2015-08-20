@@ -50,6 +50,26 @@
 <!-- /.navbar-static-side -->
 {% endblock %}
 
+{% block container %}
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">{% block page-header %}{% endblock %}</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	{% if messages %}
+	{% for message in messages %}
+	<div class="alert alert-success alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		{{message}}
+	</div>
+	{% endfor %}
+	{% endif %}
+	{% block page-wrapper %}{% endblock %}
+</div>
+{% endblock %}
+
 {% block js_block %}
 <!-- Metis Menu Plugin JavaScript -->
 <script src="{% static 'bower_components/metisMenu/dist/metisMenu.min.js' %}"></script>
