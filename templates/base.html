@@ -23,7 +23,7 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-static-top role="navigation"">
-      <!-- <div class="container"> -->
+      <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -34,10 +34,10 @@
             <a class="navbar-brand" href="{% url 'account:login' %}">BuybuyBiz</a>
         </div>
         <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'account:login' %}">Home</a></li>
+              <li><a href="{% url 'account:login' %}">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
-              <!-- 
+              
 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -50,13 +50,14 @@
                       <li><a href="#">One more separated link</a></li>
                   </ul>
               </li>
- -->
+
           </ul>
-        <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-nav navbar-right">
               <!-- <li> <a>Hello {{ user.get_username }}</a></li> -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <!-- Dropdown <span class="caret"></span> -->
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                       <li>
@@ -137,8 +138,9 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>      
-            <!-- </div> -->
+            </div>
       {% block nav_sidebar %}{% endblock %}
+      <!-- </div> -->
     </nav>
     <div class="container" role="main">
     {% if messages %}
