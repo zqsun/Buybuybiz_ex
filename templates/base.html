@@ -2,163 +2,155 @@
 {% load i18n %}{% load postman_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{% block title %}BuybuyBiz{% endblock %}</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>{% block title %}BuybuyBiz{% endblock %}</title>
 
-    <!-- Bootstrap -->
-    <link href="{% static 'base/css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'base/css/style.css' %}" rel="stylesheet">
-    {% block head_css %}{% endblock %}
-    {% block extrahead %}{% endblock %}
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!-- Bootstrap -->
+  <link href="{% static 'base/css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'base/css/style.css' %}" rel="stylesheet">
+  {% block head_css %}{% endblock %}
+  {% block extrahead %}{% endblock %}
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <nav class="navbar navbar-inverse navbar-static-top role="navigation"">
-      <div class="container">
-        <div class="navbar-header">
+      <![endif]-->
+    </head>
+    <body>
+      <nav class="navbar navbar-inverse navbar-static-top role="navigation"">
+        <div class="container">
+          <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{% url 'account:login' %}">BuybuyBiz</a>
-        </div>
-        <ul class="nav navbar-nav">
-              <li><a href="{% url 'account:login' %}">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              
-<li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li class="dropdown-header">Nav header</li>
-                      <li><a href="#">Separated link</a></li>
-                      <li><a href="#">One more separated link</a></li>
-                  </ul>
-              </li>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'account:login' %}">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
 
           </ul>
-        <ul class="nav navbar-nav navbar-right">
-              <!-- <li> <a>Hello {{ user.get_username }}</a></li> -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                        <!-- Dropdown <span class="caret"></span> -->
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                      <li>
-                        <a href="{% url 'postman_inbox' %}">
-                          <div>
-                            <i class="fa fa-comment fa-fw"></i>
-                            {% trans "Inbox" %}
-                            {% postman_unread as unread_count %}
-                            {% if unread_count %}
-                            <!-- <span class="pull-right text-muted small"> -->
-                            <span class = "badge pull-right">
-                                      {{ unread_count }}
-                                  </span>
-                                  {% endif %}
-                          </div>  
-                        </a>
-                      </li>
-                      <li class="divider"></li>
-
-                      <li>
-                        <a href="{% url 'postman_sent' %}">
-                          <div>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            {% trans "Messages Sent" %}
-                          </div>  
-                        </a>
-                      </li>
-                      <li class="divider"></li>
-
-                      <li>
-                        <a href="{% url 'postman_write' %}">
-                          <div>
-                            <i class="fa fa-twitter fa-fw"></i>
-                            {% trans "Write Message" %}
-                          </div>  
-                        </a>
-                      </li>
-                      <li class="divider"></li>
-
-                      <li>
-                        <a href="{% url 'postman_archives' %}">
-                          <div>
-                            <i class="fa fa-archive fa-fw"></i>
-                            {% trans "Archives" %}
-                          </div>  
-                        </a>
-                      </li>
-                      <li class="divider"></li>
-                      
-                      <li>
-                        <a href="{% url 'postman_trash' %}">
-                          <div>
-                            <i class="fa fa-bitbucket fa-fw"></i>
-                            {% trans "Trash" %}
-                          </div>  
-                        </a>
-                      </li>
-                      
-
-                    </ul>
-                    <!-- /.dropdown-messages -->
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li> <a>Hello {{ user.get_username }}</a></li> -->
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                <!-- Dropdown <span class="caret"></span> -->
+              </a>
+              <ul class="dropdown-menu dropdown-messages">
+                <li>
+                  <a href="{% url 'postman_inbox' %}">
+                    <div>
+                      <i class="fa fa-comment fa-fw"></i>
+                      {% trans "Inbox" %}
+                      {% postman_unread as unread_count %}
+                      {% if unread_count %}
+                      <!-- <span class="pull-right text-muted small"> -->
+                      <span class = "badge pull-right">
+                        {{ unread_count }}
+                      </span>
+                      {% endif %}
+                    </div>  
+                  </a>
                 </li>
-                
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="{% url 'account:logout'%}?next={% url 'account:login'%}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
+                <li class="divider"></li>
+
+                <li>
+                  <a href="{% url 'postman_sent' %}">
+                    <div>
+                      <i class="fa fa-envelope fa-fw"></i>
+                      {% trans "Messages Sent" %}
+                    </div>  
+                  </a>
                 </li>
-                <!-- /.dropdown -->
-            </ul>      
-            </div>
-      {% block nav_sidebar %}{% endblock %}
-      <!-- </div> -->
-    </nav>
-    <div class="container" role="main">
-    {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-              {{message}}
+                <li class="divider"></li>
+
+                <li>
+                  <a href="{% url 'postman_write' %}">
+                    <div>
+                      <i class="fa fa-twitter fa-fw"></i>
+                      {% trans "Write Message" %}
+                    </div>  
+                  </a>
+                </li>
+                <li class="divider"></li>
+
+                <li>
+                  <a href="{% url 'postman_archives' %}">
+                    <div>
+                      <i class="fa fa-archive fa-fw"></i>
+                      {% trans "Archives" %}
+                    </div>  
+                  </a>
+                </li>
+                <li class="divider"></li>
+
+                <li>
+                  <a href="{% url 'postman_trash' %}">
+                    <div>
+                      <i class="fa fa-bitbucket fa-fw"></i>
+                      {% trans "Trash" %}
+                    </div>  
+                  </a>
+                </li>
+
+
+              </ul>
+              <!-- /.dropdown-messages -->
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                </li>
+                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="{% url 'account:logout'%}?next={% url 'account:login'%}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </li>
+              </ul>
+              <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+          </ul>      
         </div>
-        {% endfor %}
-    {% endif %}
-    {% block container %}{% endblock %}
-    {% block content %}{% endblock %}
-    </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static 'base/js/jquery-1.11.3.min.js' %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'base/css/bootstrap/js/bootstrap.min.js' %}"></script>
-    {% block js_block %}{% endblock %}
-  
-  </body>
-</html>
+        {% block nav_sidebar %}{% endblock %}
+        <!-- </div> -->
+      </nav>
+      <div class="container" role="main">
+        {% block container %}{% endblock %}
+        {% block content %}{% endblock %}
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="{% static 'base/js/jquery-1.11.3.min.js' %}"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="{% static 'base/css/bootstrap/js/bootstrap.min.js' %}"></script>
+      {% block js_block %}{% endblock %}
+
+    </body>
+    </html>
