@@ -20,6 +20,7 @@ class bizProject(models.Model):
 	price = models.DecimalField(max_digits=11,decimal_places=2,default=0)
 	post_by = models.ForeignKey(User)
 	category = models.ForeignKey(bizCategory)
+	goal = models.ForeignKey(bizGoal)
 	def __unicode__(self):
 		return self.name
 
