@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^accounts/',include('account.urls', namespace="account")),
     url(r'^myaccount/',include('myaccount.urls', namespace="myaccount")),
     url(r'^messages/', include('postman.urls')),
+    url(r'^search/', include('haystack.urls',namespace='mysearch')),
 ]
