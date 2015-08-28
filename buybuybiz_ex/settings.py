@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'pagination',
     'account',
     'myaccount',
+    'mainsite',
     'postman',
 )
 
