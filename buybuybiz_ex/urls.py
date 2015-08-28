@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', include('mainsite.urls'), name='mainsite'),
+    url(r'^', include('mainsite.urls'), name='mainsite'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/',include('account.urls', namespace="account")),
     url(r'^myaccount/',include('myaccount.urls', namespace="myaccount")),
