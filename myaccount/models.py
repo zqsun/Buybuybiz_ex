@@ -18,6 +18,8 @@ class bizProject(models.Model):
 	description = models.TextField()
 	# quantity = models.DecimalField(max_digits=11,decimal_places=2)
 	price = models.DecimalField(max_digits=11,decimal_places=2,default=0)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 	post_by = models.ForeignKey(User)
 	category = models.ForeignKey(bizCategory)
 	goal = models.ForeignKey(bizGoal)
