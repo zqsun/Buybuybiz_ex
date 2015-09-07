@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load i18n pagination_tags %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="serachform">
+<form role="form" method="get" action="{% url 'mainsite:mysearch' %}">
+    <div class="row">
+        <div class="form-group col-xs-4">
+            {% render_field form.category class="form-control" %}
+        </div>
+        <div class="form-group col-xs-4">
+            {% render_field form.goal class="form-control" %}
+        </div>
+        <div class="form-group input-group col-xs-4">
+            {% render_field form.q class="form-control" placeholder="Search for..."%}
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-default" value="Search" />
+                <!-- <button class="btn btn-default" type="button">Go!</button> -->
+            </span>
+        </div>
+    </div>
+</form>
+</div>
+<h3>{{ results.count }} Projects in the database</h3>
+<hr>
+{% autopaginate results 15 %}
+{% if invalid_page %}
+    <p>{% trans "Sorry, this page number is invalid." %}</p>
+{% else %}
+{% if results %}
+    {% for r in results %}
+    {% if forloop.counter0|divisibleby:"3" %} <div class="row"> {% endif %}
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>{{r.object.name}}</b></div>
+                <div class="panel-body">
+                    <ul class="list-inline">
+                        <li class = "col-xs-6"><b>Category</b>: {{r.object.category.category}}</li>
+                        <li class = "col-xs-6"><b>Goal</b>: {{r.object.goal.goal}} </li>
+                        <!-- <li class = "col-md-4"> </li> -->
+                    </ul>
+                    <hr>
+                    {% if r.object.projectpic_set.all|length %}
+                    {% for image in r.object.projectpic_set.all %}
+                    <div id="myCarousel" class="carousel slide col-md-4" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            
+                            <!-- if there is picture -->
+                            {% if forloop.counter == 1%}
+                            <div class="item active"><img src="{{ image.picture.url }}"></div>
+                            {% else %}
+                            <div class="item"><img src="{{ image.picture.url }}"></div>
+                            {% endif %}
+                        </div>
+                        <!-- Left and right controls -->
+                          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                    </div>
+                    {% endfor %}
+                    <p class = "col-md-8">{{r.object.description|truncatewords_html:100}}</p>
+                    {% else %}
+                    <p class = "col-md-4">{{r.object.description|truncatewords_html:100}}</p>
+                    {% endif %}
+                </div>
+                <div class="panel-footer">
+                	<a href="{% url 'mainsite:viewProject' r.object.id %}" class="btn btn-outline btn-success col-md-offset-4" target="_blank">View Details</a>
+                </div>
+            </div>
+        </div>
+    {% if forloop.counter|divisibleby:"3" %} </div>{% endif %}
+    {% endfor %}
+{% endif %}
+{% endif %}
+{% endblock %}
