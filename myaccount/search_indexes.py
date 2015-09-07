@@ -3,6 +3,8 @@ from myaccount.models import bizProject
 
 class ProjectIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
+    created_at = indexes.DateTimeField(model_attr='created_at')
+    updated_at = indexes.DateTimeField(model_attr='updated_at')
 
     def get_model(self):
         return bizProject
