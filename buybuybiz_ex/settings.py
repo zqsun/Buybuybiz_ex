@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'buybuybiz_ex.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Buybuybiz',
+        'NAME': 'Buybuybiz_ex',
         'USER': 'bbb_admin',
         'PASSWORD': 'v907129',
         'HOST': '127.0.0.1',
