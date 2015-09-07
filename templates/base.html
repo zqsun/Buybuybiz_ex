@@ -35,10 +35,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'account:login' %}">BuybuyBiz</a>
+            <a class="navbar-brand" href="{% url 'mainsite:index' %}">BuybuyBiz</a>
           </div>
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'account:login' %}">Home</a></li>
+            <li><a href="{% url 'mainsite:index' %}">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
 
@@ -65,7 +65,7 @@
               </a>
               <ul class="dropdown-menu dropdown-messages">
                 <li>
-                  <a href="{% url 'postman_inbox' %}">
+                  <a href="{% url 'postman:postman_inbox' %}">
                     <div>
                       <i class="fa fa-comment fa-fw"></i>
                       {% trans "Inbox" %}
@@ -82,7 +82,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="{% url 'postman_sent' %}">
+                  <a href="{% url 'postman:postman_sent' %}">
                     <div>
                       <i class="fa fa-envelope fa-fw"></i>
                       {% trans "Messages Sent" %}
@@ -92,7 +92,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="{% url 'postman_write' %}">
+                  <a href="{% url 'postman:postman_write' %}">
                     <div>
                       <i class="fa fa-twitter fa-fw"></i>
                       {% trans "Write Message" %}
@@ -102,7 +102,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="{% url 'postman_archives' %}">
+                  <a href="{% url 'postman:postman_archives' %}">
                     <div>
                       <i class="fa fa-archive fa-fw"></i>
                       {% trans "Archives" %}
@@ -112,7 +112,7 @@
                 <li class="divider"></li>
 
                 <li>
-                  <a href="{% url 'postman_trash' %}">
+                  <a href="{% url 'postman:postman_trash' %}">
                     <div>
                       <i class="fa fa-bitbucket fa-fw"></i>
                       {% trans "Trash" %}
