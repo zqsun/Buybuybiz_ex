@@ -2,16 +2,16 @@
 
 {% block page-header %}Project Details{% endblock %}
 
-{% block content %}
-<div class="col-xs-8">
+{% block container %}
+<div class="col-md-8">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="panel-title"><h2>{{project.name}}</h2></div>
 		</div>
 		<div class="panel-body">
 			<ul class="list-inline">
-				<li class="col-xs-6"><b>Category:</b> {{project.category.category}}</li>
-				<li class="col-xs-6"><b>Goal:</b> {{project.goal.goal}}</li>
+				<li class="col-md-6"><b>Category:</b> {{project.category.category}}</li>
+				<li class="col-md-6"><b>Goal:</b> {{project.goal.goal}}</li>
 			</ul>
 			<hr>
 			<p>{{project.description}}</p>
@@ -19,7 +19,7 @@
 		</div>
 	</div>
 </div>
-<div class="col-xs-4">
+<div class="col-md-4">
 	<div class="panel panel-success">
 		<div class="panel-heading">Publisher Info</div>
 		<div class="panel-body">

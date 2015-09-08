@@ -15,6 +15,7 @@
 
   <!-- Custom Fonts -->
   <link href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'myaccount/dist/css/sb-admin-2.css' %}" rel="stylesheet">
 
   {% block head_css %}{% endblock %}
   {% block extrahead %}{% endblock %}
@@ -27,7 +28,7 @@
     </head>
     <body>
       <nav class="navbar navbar-inverse navbar-static-top role="navigation"">
-        <div class="container">
+        <!-- <div class="container"> -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -60,7 +61,7 @@
             </li>
 
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-top-links navbar-right">
             {% if user.is_authenticated %}
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -149,14 +150,15 @@
             <li><a href="{% url 'account:login'%}">Sign in</a></li>
             {% endif %}
           </ul>      
-        </div>
+        <!-- </div> -->
         {% block nav_sidebar %}{% endblock %}
         <!-- </div> -->
       </nav>
       <div class="container" role="main">
         {% block container %}{% endblock %}
-        {% block content %}{% endblock %}
+        
       </div>
+      {% block content %}{% endblock %}
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="{% static 'base/js/jquery-1.11.3.min.js' %}"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
