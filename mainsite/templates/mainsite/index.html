@@ -77,14 +77,12 @@
                 </div>
             </div>
         </div>
-    {% if forloop.counter|divisibleby:"3" %} </div>{% endif %}
+    {% if forloop.counter|divisibleby:"3" or forloop.last %} </div>{% endif %}
     {% endfor %}
 {% endif %}
 {% endif %}
 <!-- Pager -->
-<div class="row">
 <nav>
 {% paginate %}
 </nav>
-</div>
 {% endblock %}
