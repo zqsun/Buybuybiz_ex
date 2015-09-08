@@ -66,13 +66,11 @@
                             <span class="sr-only">Next</span>
                           </a>
                     </div>
-                    <hr>
-                    <p class = "col-md-12">{{r.description|truncatewords_html:100}}</p>
                     {% else %}
                     <img src="{% static 'base/img/empty_image.png' %}" alt="Empty Image" class="company_pic ">
-                    <hr>
-                    <p class = "col-md-12">{{r.description|truncatewords_html:100}}</p>
                     {% endif %}
+                    <hr>
+                    <p class = "col-md-12">{{r.description|truncatewords_html:40}}</p>
                 </div>
                 <div class="panel-footer">
                     <a href="{% url 'mainsite:viewProject' r.id %}" class="btn btn-outline btn-success col-md-offset-4" target="_blank">View Details</a>
