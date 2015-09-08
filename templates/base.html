@@ -38,6 +38,7 @@
             </button>
             <a class="navbar-brand" href="{% url 'mainsite:index' %}">BuybuyBiz</a>
           </div>
+          <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'mainsite:index' %}">Home</a></li>
             <!-- <li><a href="#about">About</a></li> -->
@@ -149,7 +150,8 @@
             {% else %}
             <li><a href="{% url 'account:login'%}">Sign in</a></li>
             {% endif %}
-          </ul>      
+          </ul> 
+          </div>     
         <!-- </div> -->
         {% block nav_sidebar %}{% endblock %}
         <!-- </div> -->
