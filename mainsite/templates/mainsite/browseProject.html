@@ -34,11 +34,13 @@
     {% if forloop.counter0|divisibleby:"3" %} <div class="row"> {% endif %}
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading"><b>{{r.name}}</b></div>
+                <div class="panel-heading">
+                    <b>{{r.name}}</b>
+                    <div class="pull-right text-success"><small>{{r.goal.goal}} </small></div>
+                </div>
                 <div class="panel-body">
                     <ul class="list-inline">
                         <li class = "col-md-6"><b>{{r.category.category}}</b></li>
-                        <li class = "col-md-6"><b>Goal</b>: {{r.goal.goal}} </li>
                         <!-- <li class = "col-md-4"> </li> -->
                     </ul>
                     <hr>
