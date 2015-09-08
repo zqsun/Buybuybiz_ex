@@ -25,7 +25,7 @@
 </div>
 <h3>{{ results.count }} Projects in the database</h3>
 <hr>
-{% autopaginate results 15 %}
+{% autopaginate results 6 %}
 {% if invalid_page %}
     <p>{% trans "Sorry, this page number is invalid." %}</p>
 {% else %}

@@ -27,7 +27,7 @@
     {% if query %}
         <h3>{{ results.count }} Results are found</h3>
 
-        {% autopaginate results 15 %}
+        {% autopaginate results 6 %}
         {% if invalid_page %}
         <p>{% trans "Sorry, this page number is invalid." %}</p>
         {% else %}
