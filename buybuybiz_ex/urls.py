@@ -19,7 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^',include('mainsite.urls', namespace="mainsite")),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/',include('account.urls', namespace="account")),
+    url(r'^accounts/',include('accounts.urls', namespace="accounts")),
     url(r'^myaccount/',include('myaccount.urls', namespace="myaccount")),
     url(r'^messages/', include('postman.urls')),
     

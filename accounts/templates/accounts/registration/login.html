@@ -34,7 +34,7 @@
                     <p>Please login to see this page.</p>
                     {% endif %}
                 {% endif %}
-                <form role="form" method="post" action="{% url 'account:login' %}">
+                <form role="form" method="post" action="{% url 'accounts:login' %}">
                     <fieldset>
                         <div class="form-group">{% csrf_token %}</div>
                         <div class="form-group">

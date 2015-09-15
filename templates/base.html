@@ -141,14 +141,14 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="{% url 'account:logout'%}?next={% url 'account:login'%}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="{% url 'accounts:logout'%}?next={% url 'accounts:login'%}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
               </ul>
               <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
             {% else %}
-            <li><a href="{% url 'account:login'%}">Sign in</a></li>
+            <li><a href="{% url 'accounts:login'%}">Sign in</a></li>
             {% endif %}
           </ul> 
           </div>     

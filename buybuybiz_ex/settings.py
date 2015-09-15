@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'haystack',
     'widget_tweaks',
     'pagination',
-    'account',
+    'accounts',
     'myaccount',
     'mainsite',
     'postman',
