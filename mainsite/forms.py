@@ -1,6 +1,7 @@
 from django import forms
 from haystack.forms import SearchForm
 from myaccount.models import bizCategory, bizGoal
+from mainsite.models import Partners
 
 class ProjectSearchForm(SearchForm):
 	category = forms.ModelChoiceField(queryset=bizCategory.objects.all(),required=False,empty_label="All Categories")
@@ -15,4 +16,9 @@ class ProjectSearchForm(SearchForm):
 		if self.cleaned_data['goal']:
 			sqs = sqs.filter(goal=self.cleaned_data['goal'])
 		return sqs
-	
+
+# class PartnerForm(forms.ModelForm):
+# 	description = forms.CharField(widget=forms.Textarea)
+# 	class Meta:
+# 		model = Partners
+# 		fields = ['name','company','title','description','picture']

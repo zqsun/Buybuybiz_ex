@@ -2,7 +2,7 @@ from django.shortcuts import render,render_to_response
 from django.template import RequestContext
 from haystack.generic_views import SearchView
 from mainsite.forms import ProjectSearchForm
-
+from mainsite.models import Partners
 from myaccount.models import bizCategory, bizGoal, bizProject, projectPic
 
 from haystack.forms import ModelSearchForm
@@ -110,4 +110,9 @@ def index(request):
 	all_results = SearchQuerySet().all().order_by('-updated_at')
 	context = {'form':project_form, 'results':all_results}
 	return render(request,'mainsite/index.html',context)
+
+def funds(request):
+    partners = Partners.objects.all()
+    context = {'partners':partners}
+    return render(request,'mainsite/funds.html',context)
 
