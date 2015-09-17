@@ -6,7 +6,6 @@
 {% block container %}
 <h2>Our Partners</h2>
 <hr>
-<p>hello funds {{ partners.count }}</p>
 {% autopaginate partners 6 %}
 {% if invalid_page %}
     <p>{% trans "Sorry, this page number is invalid." %}</p>
