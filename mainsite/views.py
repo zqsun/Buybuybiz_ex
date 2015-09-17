@@ -100,10 +100,13 @@ def viewProject(request,project_id):
 	return render(request, 'mainsite/viewProject.html', context)
 
 def browseProject(request,category_name):
-	results = bizProject.objects.filter(category__category__contains=category_name).order_by('-updated_at')
-	project_form = ProjectSearchForm()
-	context = {'results':results,'form':project_form,'category':category_name}
-	return render(request, 'mainsite/browseProject.html', context)
+    if category_name == "ALL":
+        results = bizProject.objects.all().order_by('updated_at')
+    else:
+        results = bizProject.objects.filter(category__category__contains=category_name).order_by('-updated_at')
+    project_form = ProjectSearchForm()
+    context = {'results':results,'form':project_form,'category':category_name}
+    return render(request, 'mainsite/browseProject.html', context)
 
 def index(request):
 	project_form = ProjectSearchForm()
