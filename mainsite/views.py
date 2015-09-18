@@ -101,7 +101,7 @@ def viewProject(request,project_id):
 
 def browseProject(request,category_name):
     if category_name == "ALL":
-        results = bizProject.objects.all().order_by('updated_at')
+        results = bizProject.objects.order_by('-updated_at').all()
     else:
         results = bizProject.objects.filter(category__category__contains=category_name).order_by('-updated_at')
     project_form = ProjectSearchForm()
