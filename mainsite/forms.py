@@ -5,7 +5,7 @@ from mainsite.models import Partners
 
 class ProjectSearchForm(SearchForm):
 	category = forms.ModelChoiceField(queryset=bizCategory.objects.all(),required=False,empty_label="All Categories")
-	goal = forms.ModelChoiceField(queryset=bizGoal.objects.all(),required=False,empty_label="U.S./ Israel Technologies")
+	goal = forms.ModelChoiceField(queryset=bizGoal.objects.all(),required=False,empty_label="U.S./ Israel Companies")
 	def serch(self):
 		sqs = super(ProjectSearchForm, self).search()
 		if not self.is_valid():
